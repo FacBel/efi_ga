@@ -1,2 +1,3 @@
 # efi_ga
-proyecto en funcionamiento CI/CD
+proyecto en funcionamiento CI/CD.
+
