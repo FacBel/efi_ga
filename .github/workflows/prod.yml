@@ -1,0 +1,25 @@
+# .github/workflows/prod.yml
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to Production Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.IP_DEL_SERVIDOR }}
+        username: ${{ secrets.USUARIO_SERVIDOR }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          cd ~/lemp-sites/facundo_bellandi/production
+          git pull origin main
